@@ -1,11 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 	<title>Grails Console</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<con:resources/>
+	<meta name="layout" content="consolePluginSpecificLayout" />
 </head>
 
 <body>
@@ -50,7 +47,6 @@
 
 <div class="south" style="display: none"></div>
 
-<con:layoutResources/>
 <script type="text/javascript" charset="utf-8">
 window.gconsole = {
 	pluginContext: "${resource(plugin: 'console')}",
