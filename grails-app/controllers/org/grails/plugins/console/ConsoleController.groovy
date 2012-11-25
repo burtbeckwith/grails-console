@@ -9,9 +9,19 @@ class ConsoleController {
 
 	def consoleService
 	def pluginManager
+	def grailsApplication
 
 	def index = {
-		String code = session['_grails_console_last_code_'] ?: '''\
+
+		def startcode = grailsApplication.config.grails.console?.startcode
+		if(!startcode){
+			startcode =  '''\
+// You can configure a start code in Config.groovy, i.g.:
+//     grails.console.startcode="import your.long.package.name.*;"
+'''
+		}
+
+		String code = session['_grails_console_last_code_'] ?: """\
 // Groovy Code here
 
 // Implicit variables include:
@@ -20,11 +30,14 @@ class ConsoleController {
 //     config: the Grails configuration
 //     request: the HTTP request
 //     session: the HTTP session
+//     log: the ConsoleService.log
 
 // Shortcuts:
 //     Execute: Ctrl-Enter
 //     Clear: Esc
-'''
+
+${startcode}
+"""
 
 		[code: code]
 	}
