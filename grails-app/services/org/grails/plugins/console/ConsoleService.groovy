@@ -6,6 +6,8 @@ class ConsoleService {
 
 	static transactional = false
 
+	def mongo
+
 	def grailsApplication
 
 	/**
@@ -62,6 +64,7 @@ class ConsoleService {
 		bindingValues.grailsApplication = grailsApplication
 		bindingValues.config = grailsApplication.config
 		bindingValues.log = log
+		bindingValues.mongo = mongo
 		new GroovyShell(grailsApplication.classLoader, new Binding(bindingValues))
 	}
 }

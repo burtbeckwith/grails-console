@@ -10,8 +10,10 @@ class ConsoleController {
 	def consoleService
 	def pluginManager
 	def grailsApplication
+	def mongo
 
 	def index = {
+		def mongoTip = mongo ? '//     mongo: the GMongo \n' : ''
 
 		def startcode = grailsApplication.config.grails.console?.startcode
 		if(!startcode){
@@ -31,7 +33,7 @@ class ConsoleController {
 //     request: the HTTP request
 //     session: the HTTP session
 //     log: the ConsoleService.log
-
+${mongoTip}
 // Shortcuts:
 //     Execute: Ctrl-Enter
 //     Clear: Esc
